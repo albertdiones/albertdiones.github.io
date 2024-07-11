@@ -47,14 +47,58 @@
     </header>
     <main>
       <h2>Open-source repos and Packages:</h2>
-      <section class="packages">
+      <section class="packages javascript">
         <h3>JavaScript/TypeScript</h3>
         <ul>
-          <li><a href='https://www.npmjs.com/package/add_logger'>https://www.npmjs.com/package/add_logger</a></li>
-          <li><a href='https://www.npmjs.com/package/add_repeater'>https://www.npmjs.com/package/add_repeater</a></li>
-          <li><a href='https://github.com/albertdiones/MongoDash'>https://github.com/albertdiones/MongoDash</a></li>
+          <li>https://www.npmjs.com/package/add_logger</li>
+          <li>https://www.npmjs.com/package/add_repeater</li>
+          <li>https://github.com/albertdiones/MongoDash</li>
+        </ul>
+      </section>
+      <section class="packages old">
+        <h3>Old Projects</h3>
+        <ul>
+          <li>https://github.com/albertdiones/ADD-smart-entities</li>
         </ul>
       </section>
     </main>
+    <script>
+      /**
+       * from chatgpt (and edited)
+       * help me with creating my github.io page, using javascript, show me code that will replace all non-link http:// and replace them with a href
+       */
+      document.addEventListener("DOMContentLoaded", function() {
+
+        // Regular expression to match http:// URLs that are not inside <a> tags
+        const urlRegex = /(https?:\/\/[^\s]+)/g;
+
+        // Function to replace non-link URLs with clickable links
+        function replaceUrlsWithLinks(element) {
+              element.childNodes.forEach(child => {
+                  if (child.nodeType === Node.TEXT_NODE) {
+                      const newText = child.nodeValue.replace(urlRegex, '<a href="$1">$1</a>');
+                      const newFragment = document.createDocumentFragment();
+
+                      // Create a temporary div to parse the new HTML string
+                      const tempDiv = document.createElement("div");
+                      tempDiv.innerHTML = newText;
+
+                      // Append the parsed HTML to the new fragment
+                      Array.from(tempDiv.childNodes).forEach(node => newFragment.appendChild(node));
+                      
+                      // Replace the original text node with the new fragment
+                      element.replaceChild(newFragment, child);
+                  } else if (child.nodeType === Node.ELEMENT_NODE) {
+                      // Recursively process child elements
+                      replaceUrlsWithLinks(child);
+                  }
+              });
+          }
+
+          // Replace URLs with links in the content div
+          replaceUrlsWithLinks(document.querySelector("body"));
+      });
+
+    </script>
   </body>
 </html>
