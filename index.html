@@ -6,19 +6,26 @@
         font-size:12px;
         display:flex;
         align-content: center;
-        flex-direction: column;
         justify-content: center;
+        flex-flow: column wrap;
+        padding:0;
+        margin:0;
       }
       header,main {
-        width:900px;
-        display:#e8e8e8;
+        width:90vw;
+        max-width:900px;
+        background:#ececec;
+        padding:0 1em;
+      }
+      h1, h2, h3, h4, h5, h6 {
+        font-family:verdana, Verdana, Geneva, Tahoma, sans-serif;
       }
       h1 {
-        font-size:1.5rem;
+        font-size:1.2rem;
         color:#555;
       }
       h2 {
-        font-size:2rem;
+        font-size:1.5rem;
       }
     </style>
   </head>
@@ -30,8 +37,8 @@
     <main>
       <h2>Open-source repos and Packages:</h2>
       <ul>
-        <li>https://www.npmjs.com/package/add_logger</li>
-        <li>https://www.npmjs.com/package/add_repeater</li>
+        <li><a href='https://www.npmjs.com/package/add_logger'>https://www.npmjs.com/package/add_logger</a></li>
+        <li><a href='https://www.npmjs.com/package/add_repeater'>https://www.npmjs.com/package/add_repeater</a></li>
       </ul>
     </main>
   </body>
